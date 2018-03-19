@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="">
+    <title>高雄旅遊景點</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="gototop"><i class="fas fa-angle-double-up"></i></div>
+    <div id="wrap">
+    <header>
+      <h1>高雄旅遊資訊</h1>
+      <div class="selectbox">
+        <form>
+          <select id="selectlist" name="AdministrativeRegion">
+            <option value="-"> -- 請選擇行政區 -- </option>
+            <!-- <option data-number="0" value="XX區">XX區</option> -->
+          </select>
+        </form>
+      </div>
+      <div class="hotbox">
+        <h2>熱門行政區</h2>
+        <ul>
+          <li><input type="button" value="苓雅區"></input></li>
+          <li><input type="button" value="三民區"></input></li>
+          <li><input type="button" value="新興區"></input></li>
+          <li><input type="button" value="大樹區"></input></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="hr"></div>
+      <div class="title"><!-- XX區 --></div>
+        <ul class="travelbox">
+            <!-- <li>
+              <div class="pic"></div>
+              <h3>高雄願景館</h3>
+              <h2>三民區</h2>
+              <div class="about">
+                <div class="opentime">週二至週日10:00-18:00，每週一公休</div>
+                <div class="address">高雄市三民區建國二路318號</div>
+                <div class="telephone">886-7-2363357</div>
+                <div class="toll">免費參觀</div>
+              </div>
+            </li> -->
+        </ul>
+    </main>
+    </div>
+    <footer>
+    <div id="wedneme">高雄旅遊網</div>
+    <div id="source">資料來源：高雄市政府</div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/travel.js"></script>
+  </body>
+</html>

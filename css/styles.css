@@ -1,0 +1,290 @@
+/* Component styles */
+
+html, body {
+      height:100%;
+      width: 100%;
+      margin: 0px auto;
+      font-family: 微軟正黑體;
+      }
+      #wrap{
+        max-width: 1024px;
+        min-height: 100%;
+        width: 100%;
+        margin:  0px auto ;
+        min-height: 100%;
+        background-color: #f7f7f7;
+      }
+      #gototop{
+        background-color: #0c7ecd;
+        color: #fff;
+        position: fixed;
+        bottom:10px; /* 與下方的距離, 也可改為百分比, 即為距離螢幕下方的百分比 */
+        right:10px; /* 與右方的距離 */
+        width:24px; /* 按鈕原始寬度 */
+        height:24px; /* 按鈕原始高度 */
+        padding:0px;
+        margin:10px;
+        line-height: 21px;
+        text-align: center;
+        opacity: 0.3; /* 按鈕原始透明度 */
+        z-index: 10;
+        cursor: pointer;
+        transition: all .5s; /* 動畫效果 持續期間 */
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard syntax */
+      }
+      #gototop:hover{ /* 滑鼠經過按鈕時 */
+        opacity: 1; /* 透明度 */
+      }
+      header{
+        height: 380px;
+        background: url(../images/head.png) no-repeat;
+        background-position: top center;
+        -webkit-user-select: none;
+      }
+      header h1{
+        padding: 90px 0;
+        text-align: center;
+        font-size: 40px;
+        letter-spacing: 3.89px;
+        color: #FFFFFF;
+      }
+      .selectbox{
+        margin:  0px auto;
+        text-align: center;
+      }
+      header select{
+        max-width: 452px;
+        width: 44.2%;
+        margin-left: 8px;
+        height: 48px;
+        padding: 8px 11px 8px 9.5px;
+        color: #000000;
+        font-family: 微軟正黑體;
+        font-weight: bolder;
+        font-size: 18px;
+        line-height: 21px;
+        border: 3px solid #FFFFFF;
+        border-radius: 3px;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        background: url(../images/icons/icons_down.png) no-repeat right center transparent;
+        background-origin: content-box;
+        background-color: rgba(255, 255, 255, 0.7);
+        outline: none;
+      }
+      .hotbox{
+        max-width: 800px;
+        max-height: 112px;
+        width: 78.2%;
+        margin: 85px auto 0px auto;
+        padding: 20px 26px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+      .hotbox h2{
+        margin: 0px 0px 10px 0px;
+        color: #000000;
+        font-weight: bolder;
+        font-size: 18px;
+        line-height: 21px;
+      }
+      .hotbox li{
+        margin: 0px 20px;
+        text-align: center;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      .hotbox li input{
+        width: 130px;
+        padding: 10px 0px;
+        border: none;
+        background-color: transparent;
+        text-decoration: none;
+        outline: none;
+        font-size: 20px;
+        line-height: 21px;
+        color: #FFFFFF;
+      }
+      .hotbox li:nth-child(1){
+        background: #8A82CC;
+      }
+      .hotbox li:nth-child(2){
+        background: #FFA782;
+      }
+      .hotbox li:nth-child(3){
+        background: #F5D005;
+      }
+      .hotbox li:nth-child(4){
+        background: #559AC8;
+      }
+      main{
+        padding-bottom: 90px; /*footer 有多高就用多高*/
+        min-height: 100%;
+      }
+      .hr{
+        width: 90%;
+        margin: 120px auto 50px auto;
+        border: 1px dashed #559AC8;
+      }
+      .title{
+        color: #8A82CC ;
+        font-size: 36px;
+        line-height: 43px;
+        text-align: center;
+        font-weight: bolder;
+      }
+      .travelbox{
+        padding: 0px 40px;
+      }
+      .travelbox li{
+        position:relative;
+        max-width: 464px;
+        width: calc(50% - 20px);
+        margin: 20px 5px;
+        padding-bottom: 10px;
+        background: #FFFFFF;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
+        display: inline-block;
+        vertical-align:top;
+        text-align: right;
+      }
+      .travelbox .pic{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        background-size: cover;
+        background-position: center;
+        max-width: 100%;
+        height: 155px;
+      }
+      .travelbox h3{
+        position:absolute;
+        top: 115px;
+        margin: 0px 20px;
+        color: #FFFFFF;
+        font-size: 24px;
+        line-height: 28px;
+      }
+      .travelbox h2{
+        position:absolute;
+        top: 130px;
+        right: 0px;
+        margin: 0px 20px;
+        color: #FFFFFF;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: bolder;
+      }
+      .about{
+        padding: 20px;
+      }
+      .opentime,.address,.telephone{
+        text-align: left;
+        margin: 5px auto;
+        display: inline-block;
+      }
+      .opentime,.address{
+        width: 100%;
+      }
+      .telephone{
+        float: left;
+      }
+      .toll{
+        margin: 5px 10px;
+        float: right;
+        display: inline-block;
+      }
+      .opentime::before,.address::before,.telephone::before,.toll::before{
+        content:"";
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        vertical-align:middle;
+      }
+      .opentime::before{
+        background-image: url('../images/icons/icons_clock.png');
+      }
+      .address::before{
+        background-image: url('../images/icons/icons_pin.png');
+      }
+      .telephone::before{
+        background-image: url('../images/icons/icons_phone.png');
+      }
+      .toll::before{
+        background-image: url('../images/icons/icons_tag.png');
+      }
+      .fb { background-position: 0 0; }
+      footer{
+        max-width: 1024px;
+        margin:  0px auto ;
+        position:relative;
+        width:100%;
+        height:90px;
+        margin-top: -90px;
+        text-align: center;
+        background-color: #559AC8;
+        clear:both;
+      }
+      #wedneme{
+        padding-top: 25px;
+        padding-bottom: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight:bold;
+        line-height: 17px;
+      }
+      #source{
+        color: #FFD366;
+        font-size: 14px;
+        font-weight:bold;
+        line-height: 17px;
+      }
+@media only screen and (min-device-width : 320px) and (max-device-width : 667px),(max-width: 1024px)
+{
+      header select{
+        width: 90%;
+      }
+      .hotbox{
+        max-height: 100%;
+        margin: 20px auto 20px auto;
+      }
+      .hotbox li {
+        width: 100%;
+        margin: 10px auto;
+      }
+      .hotbox li input {
+        width: 100%;
+      }
+      .hr{
+        margin: 250px auto 50px auto;
+      }
+      .travelbox{
+        padding: 0px 0px;
+        text-align: center;
+      }
+      .travelbox li{
+        width: 80%;
+      }
+
+}
