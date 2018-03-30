@@ -14,7 +14,7 @@ var travelbox = document.querySelector('.travelbox');
 // 資料 設定
 var data = [0,0];
 var xhr = new XMLHttpRequest();
-xhr.open('get','http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json',true);
+xhr.open('get','https://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json',true);
 xhr.send(null);
 xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
