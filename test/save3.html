@@ -1,3 +1,4 @@
+<!DOCTYPE>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -67,9 +68,6 @@
   }
   #saturation_btn{
     position: absolute;
-    width: 10px;
-    height: 15px;
-    background-color: #b1b1b1;
     top:-150%;
     left:100%;
     margin-left: -8px;
@@ -84,9 +82,6 @@
   }
   #brightness_btn{
     position: absolute;
-    width: 10px;
-    height: 15px;
-    background-color: #b1b1b1;
     top:-150%;
     left:100%;
     margin-left: -8px;
@@ -104,14 +99,14 @@
     <p>Saturation</p>
     <div id="saturation">
       <div id="saturation_bar">
-        <div id="saturation_btn"></div>
+        <img id="saturation_btn" src="./images/bs_n.png"/>
       </div>
       <img src="./images/bg_sb_11.png"/>
     </div>
     <p>Brightness</p>
     <div id="brightness">
       <div id="brightness_bar">
-        <div id="brightness_btn"></div>
+        <img id="brightness_btn" src="./images/bs_n.png"/>
       </div>
       <img src="./images/bg_sb_11.png"/>
     </div>
@@ -124,67 +119,17 @@
   var saturation_btn = document.querySelector('#saturation_btn');
   var brightness_bar = document.querySelector('#brightness_bar');
   var brightness_btn = document.querySelector('#brightness_btn');
-  var dragging = "none";
+
   var s = 100;
   var l = 50;
-  document.onmousemove = move;
-  /*
-    document.onmousemove = move;
-    在文檔對像上綁定mousemove和mouseup事件，
-    不在拖拽的元素上綁定是因為當鼠標移動太快而超出元素的範圍時會停止拖拽，
-    而綁定在文件上則可以避免這樣的事情發生 。拖拖再快都不會超出文件的範圍。
-  */
   // 功能與更新
   saturation_bar.addEventListener('click', satbar);
+  saturation_btn.addEventListener('click', test);
   brightness_bar.addEventListener('click', satbar2);
-  //brightness_bar.addEventListener('click', test);
-
-  saturation_btn.addEventListener("mousedown",btn_down);
-  saturation_btn.addEventListener("mouseup",btn_up);
-  brightness_btn.addEventListener("mousedown",btn_down);
-  brightness_btn.addEventListener("mouseup",btn_up);
-  function btn_down(e){
-    if(dragging =="none"){
-      dragging = event.srcElement.id;
-    }else{
-      dragging = "none";
-    }
-  }
-  function btn_up(e){
-    dragging = "none";
-  }
-  function move(e){
-    var bar=saturation_bar.getBoundingClientRect();
-    var barx= bar.x-5;//連結X座標-
-    var mousex = e.clientX;//滑鼠X座標
-    var x=((e.clientX-barx)/200)*100;//((滑鼠X座標-連結X座標)/200)*100
-    //var width = document.documentElement.clientWidth - saturation_btn.offsetWidth;
-    if(x >= 100){
-          x=100;
-        }else if(x <= 0){
-          x=0;
-        }
-    if(dragging == "saturation_btn")
-      {
-        saturation_btn.style.left= x +"%";
-        s=x;
-        ellipse.style.backgroundColor="hsl(350," + s + "%, " + l + "%)";
-      }else if(dragging == "brightness_btn")
-      {
-        brightness_btn.style.left= x +"%";
-        l=(x/2);
-        ellipse.style.backgroundColor="hsl(350," + s + "%, " + l + "%)";
-      }else{
-        dragging = "none";
-      }
-      // console.log("滑鼠座標 " + e.clientX);
-      // console.log("barx " + barx);
-      // console.log("x = "+ x);
-      // console.log("e.x = "+ e.offsetX);
-  }
+  brightness_bar.addEventListener('click', test);
   function satbar(e){
     e.preventDefault();
-    if(event.srcElement.id == 'saturation_bar'){
+    if(e.target.nodeName == 'DIV'){
       console.log("x"+e.offsetX+" y= "+e.offsetY);
       var x = (e.offsetX/200)*100;
       saturation_btn.style.left= x +"%";
@@ -192,9 +137,11 @@
       ellipse.style.backgroundColor="hsl(350," + s + "%, " + l + "%)";
     }
   }
+  function test(e){
+
+  }
   function satbar2(e){
-    console.log(event.srcElement.id);
-    if(event.srcElement.id == 'brightness_bar'){
+    if(e.target.nodeName == 'DIV'){
     console.log("x"+e.offsetX+" y= "+e.offsetY);
     var x = (e.offsetX/200)*100;
     brightness_btn.style.left= x +"%";
@@ -218,4 +165,47 @@
  //      document.getElementById('colorwheel').appendChild(color)
  //    };
 </script>
+</body>
+</html>
+=======
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="travelbox">
+  
+</div>
+
+<script type="text/javascript">
+
+// MOD 設定
+var travelbox = document.querySelector('.travelbox');
+// 資料 設定
+var data = [0,0];
+var xhr = new XMLHttpRequest();
+xhr.open('get','https://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json',true);
+xhr.send(null);
+xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction();
+    }else{
+      travelbox.innerHTML = "沒法連接資料庫 status: " + xhr.status + " readyState: " + xhr.readyState;
+    }
+  }
+  function myFunction() {
+    var area= [];
+    var arealist= [];
+    var str = '';
+    data = JSON.parse(xhr.responseText);
+    data = data.result.records;
+    console.log(data);
+     for (var i = 0; i < data.length; i++) {
+      str += '<li> test:' + data[i].Tel + '.</li>'
+    }
+    console.log(str);
+    travelbox.innerHTML = str;
+  }
+</script>
+</body>
 </html>
