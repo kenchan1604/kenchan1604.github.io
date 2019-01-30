@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="1F - 9x9 乘法表">
+        <meta name="keywords" content="1F - 9x9 乘法表">
+        <meta name="author" content="CCW">
+        <meta name="copyright" content="© KCHKD. All rights reserved.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1F - 9x9 乘法表</title>
+        <style>
+            html{
+                color: #2eb738;
+                background-color: #F0F0F0;
+            }
+            body{
+                margin: 0px;
+            }
+            #multiplication_card{
+                background-color: #F0F0F0;
+                box-shadow: 0 0px 0px #d8d8d8;
+                text-align: center;
+            }
+            #multiplication_card h1{
+                font-size: 56px;
+            }
+            #multiplication_card p{
+                font-size: 24px;
+            }
+            #multiplication_card .line {
+            position: relative;
+            width: 90%;
+            height: 1px;
+            background-color: #2eb738;
+            }
+            #multiplication_card .line:before,
+            #multiplication_card .line:after {
+            content: "×";
+            position: absolute;
+            top: -20px;
+            font-size: 24px;
+            color: #2eb738;
+            }
+            #multiplication_card .line:before {
+            left: -15px;
+            }
+
+            #multiplication_card .line:after {
+            right: -15px;
+            }
+            .multiplierbox {
+                width: calc(100%/3 - 62px);
+                min-width: 350px;
+                display: inline-block;
+                margin: 30px;
+                background-color:#FFFFFF;
+                border-radius: 100px 0 30px 0;
+                box-shadow: 0 3px 10px #d8d8d8;
+            }
+            .multiplierbox .title{
+                color: #2eb738;
+                font-size: 128px;
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+                text-align: center;
+            }
+            .multiplierbox li{
+                width: 48%;
+                margin: 8px 0px;
+                color: #2eb738;
+                display: inline-block;
+                font-size: 24px;
+                word-spacing: 2px;
+                text-align: left;
+            }
+            .content{
+                text-align: center;
+                margin: 34px 10%;
+            }
+            footer{
+                width: calc(100% - 170px);
+                position: fixed;
+                bottom: 0px;
+                padding: 8px 85px;
+                color: #F0F0F0;
+                line-height: 24px;
+                background-color: #2eb738;
+                text-align: right;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="chart_box">
+                <div class="multiplierbox" id="multiplication_card">
+                    <div class="line"></div>
+                    <h1>九九乘法表</h1>
+                    <p>MULTIPLICATION CHART</p>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </main>
+        <footer>
+                Copyright © 2019 HexSchool. All rights reserved. | Code: CCW
+        </footer>  
+    </body>
+    <script>
+            var multiplicand = [1,2,3,4,5,6,7,8,9];//被乘數
+            var multiplier = 1//乘數
+            var chartbox = document.querySelector('.chart_box');
+            var multiplierbox_content = "";
+            //multiplier[i]
+            for (let multiplier = 1; multiplier < 9; multiplier++){
+                for (let i = 0; i < multiplicand.length; i++) {
+                    var content = multiplicand[multiplier] + " X " + (i+1) + " = " + ( multiplicand[multiplier] * (i+1) )
+                    multiplierbox_content = multiplierbox_content + " <li> " + content + "</li>";
+                }
+                chartbox.innerHTML = chartbox.innerHTML + "<div class='multiplierbox'><div class='content'><li class='title'>" + multiplier + "</li>" + multiplierbox_content + "</div></div>";
+                multiplierbox_content = "";
+            }
+        </script>
+</html>
