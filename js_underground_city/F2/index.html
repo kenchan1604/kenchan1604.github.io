@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="2F - Clock">
+        <meta name="keywords" content="2F - Clock">
+        <meta name="author" content="CCW">
+        <meta name="copyright" content="© KCHKD. All rights reserved.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2F - Clock</title>
+        <style>
+            html{
+                background-color: #293B29;
+            }
+            body{
+                margin: 0px;
+                text-align: center;
+            }
+            .clock_box{
+                position: relative;
+                width: 500px;
+                height: 500px;
+                margin: 0 35%;
+            }
+            #clock_bg{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            #hour{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: left;
+                transform: rotate(0deg);
+            }
+            #minute{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: top;
+                transform: rotate(0deg);
+            }
+            #second{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: top;
+                transform: rotate(0deg);
+            }
+            
+            footer{
+                width: calc(100% - 170px);
+                position: fixed;
+                bottom: 0px;
+                padding: 8px 85px;
+                color: #F0F0F0;
+                line-height: 24px;
+                background-color: #2eb738;
+                text-align: right;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body onload="startTime()">
+        <main>
+            <div id="txt"></div>
+            <div class="clock_box">
+                <img id="clock_bg"src="./images/clock-bg.svg" alt="bg">
+                <img id="hour" src="./images/hour-hand.svg" alt="hour">
+                <img id="minute" src="./images/minute-hand.svg" alt="minute">
+                <img id="second" src="./images/second-hand.svg" alt="second">
+            </div>
+        </main>
+        <footer>
+                Copyright © 2019 HexSchool. All rights reserved. | Code: CCW
+        </footer>  
+    </body>
+    <script>
+            var hour_img = document.querySelector('#hour');
+            var minute_img = document.querySelector('#minute');
+            var second_img = document.querySelector('#second');
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                //console.log(h + ":" + m + ":" + s);
+                var h_deg = "rotate("+(h-15)*6+"deg)";
+                var s_deg = "rotate("+(s-30)*6+"deg)";
+                var m_deg = "rotate("+(m-30)*6+"deg)";
+                hour_img.style.transform = h_deg;
+                minute_img.style.transform = m_deg;
+                second_img.style.transform = s_deg;
+                var t = setTimeout(startTime, 500);
+            }
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+
+        </script>
+    
+</html>
