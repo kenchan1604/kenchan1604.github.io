@@ -300,8 +300,7 @@
             function MoneyFormat(ValIdName) {
                 var num = Number(ValIdName);
                 var toFixednum = num.toFixed(2);
-                var returnNum = num.toLocaleString('en-US', { maximumFractionDigits: 2})
-                //var returnNum = num.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+                var returnNum = num.toLocaleString('en-US', { maximumFractionDigits: 2, MaximumFractionDigits: 2 })
                 return returnNum;
             }
 
