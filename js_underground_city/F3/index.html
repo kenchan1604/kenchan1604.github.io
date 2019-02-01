@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="3F - Calculator">
+        <meta name="keywords" content="3F - Calculator">
+        <meta name="author" content="CCW">
+        <meta name="copyright" content="© KCHKD. All rights reserved.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3F - Calculator</title>
+        <style>
+            html{
+                background-color: #E8E8E8;
+            }
+            body{
+                margin: 0px;
+                text-align: center;
+            }
+            .calculator{
+                width: 350px;
+                margin: 129px auto;
+            }
+            .calculator_display{
+                width: 100%;
+                border-radius:20px 20px 0px 0px;
+                padding: 16px 0px;
+                background-color: #041936;
+                text-overflow : ellipsis;
+                /*white-space : nowrap;*/
+                overflow : hidden;
+            }
+            #display_Formula{
+                width: calc(100% - 40px);
+                margin: 0px 20px;
+                color: #00C4FF;
+                font-size: 16px;
+                line-height: 1;
+                text-align:right;
+                text-overflow : ellipsis;
+                /*white-space : nowrap;*/
+                overflow-y:hidden;
+                overflow-x: auto;
+            }
+            #display_ans{
+                margin: 0px 16px;
+                color: #FFFFFF;
+                font-size: 56px;
+                line-height: 1;
+                text-align:right;
+                text-overflow : ellipsis;
+                /*white-space : nowrap;*/
+                overflow-y:hidden;
+                overflow-x: auto;
+            }
+            .calculator_keys{
+                width: 100%;
+                height: 416px;
+                background-color: #062145;
+                border-radius:0px 0px 20px 20px;
+            }
+            .calculator_keys button{
+                width: 72px;
+                height: 64px;
+                padding: 18px 29px;
+                margin: 8px 4px;
+                color: #FFFFFF;
+                border: none;
+                font-size: 24px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                background-color: #062145;
+            }
+            .calculator_keys .key_operator{
+                background-color: #041936;
+                border-radius: 16px;
+            }
+            .calculator_keys #key_ac,.calculator_keys #key_del{
+                color: #00C4FF;
+            }
+            .calculator_keys #key_equal{
+                width: 155px;
+                background: -webkit-linear-gradient(left,#00C4FF,#6C00FF);
+                background: -o-linear-gradient(right,#00C4FF,#6C00FF);
+                background: -moz-linear-gradient(right,#00C4FF,#6C00FF);
+                background: linear-gradient(to right,#00C4FF,#6C00FF);
+                border-radius: 16px;
+                text-align:right;
+            }
+            #display_ans::-webkit-scrollbar, #display_Formula::-webkit-scrollbar{
+                height: 5px;
+                position: relative;
+                border-style: solid;
+                background: #CCC;
+            }
+            #display_ans::-webkit-scrollbar-track, #display_Formula::-webkit-scrollbar-track{
+                background-color: #ffffff;
+                border: 5px solid #062145;
+            }
+
+            #display_ans::-webkit-scrollbar-thumb, #display_Formula::-webkit-scrollbar-thumb{
+                height: 20px;
+                background:#00C4FF;
+            }
+            #display_ans::-webkit-scrollbar-button, #display_Formula::-webkit-scrollbar-button{
+                width: 5px;
+                height: 5px;
+                color: #FFFFFF;
+                background-color: #000000;
+                text-align: center;
+                line-height: 5px;
+            }
+            #display_ans::-webkit-scrollbar-button:horizontal:decrement, #display_Formula::-webkit-scrollbar-button:horizontal:decrement {
+                background-image: url(../images/left.svg);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                width: 5px;
+                background-color: #ffffff;
+            }
+            #display_ans::-webkit-scrollbar-button:horizontal:increment, #display_Formula::-webkit-scrollbar-button:horizontal:increment {
+                background-image: url(../images/right.svg);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                width: 5px;
+                background-color: #ffffff;
+            }
+            footer{
+                width: calc(100% - 170px);
+                position: fixed;
+                bottom: 0px;
+                padding: 8px 85px;
+                color: #F0F0F0;
+                line-height: 24px;
+                background-color: #2eb738;
+                text-align: right;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="calculator">
+                <div class="calculator_display">
+                    <div id="display_Formula">0</div>
+                    <div id="display_ans">0</div>
+                </div>
+                <div class="calculator_keys">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button class="key_operator" data-action="divide">÷</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button class="key_operator" data-action="multiply">&times;</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button class="key_operator" data-action="add">+</button>
+                    <button>0</button>
+                    <button>00</button>
+                    <button>.</button>
+                    <button class="key_operator" data-action="subtract">-</button>
+                    <button id="key_ac" data-action="ac">AC</button>
+                    <button id="key_del" data-action="del">⌫</button>
+                    <button id="key_equal" data-action="calculate">=</button>
+                </div>
+            </div>
+        </main>
+        <footer>
+                Copyright © 2019 HexSchool. All rights reserved. | Code: CCW
+        </footer>  
+    </body>
+    <script>
+            
+        //var  = document.querySelector('#hour');
+            var calculator = document.querySelector('.calculator')
+            var keys = calculator.querySelector('.calculator_keys')
+            var display = calculator.querySelector('#display_Formula')
+            var display_ans = calculator.querySelector('#display_ans')
+
+            var num1 ='';
+            var num2 ='';
+            var ans ='';
+            var operator;
+            keys.addEventListener('click', e => {
+              if (e.target.matches('button')) {     
+                var key = e.target;
+                var action = key.dataset.action;
+                var keyContent = key.textContent;
+                var displayedNum = display.textContent;
+                //console.log(key);
+                //console.log(action);
+                //console.log(keyContent);
+                //console.log(displayedNum);
+                if (!action) {
+                    if (displayedNum === '0') {
+                            display.textContent = keyContent;
+                            num1 = keyContent;
+                    } else {
+                            display.textContent = displayedNum + keyContent;
+                            num1 = num1 + keyContent;
+                    }
+                }else if (action === 'add' || action === 'subtract' || action === 'multiply' ||action === 'divide'){
+                    switch(action) {
+                    case 'add':
+                        display.textContent = displayedNum + '+';
+                        operator = "+";
+                        console.log(num1 +","+ num2)
+                        if(num2==''){
+                            num2 = num1;
+                            num1 = "";
+                        }else{
+                            ans =  Number(num1) + Number(num2);
+                            console.log(ans)
+                            num2 = ans;
+                            num1 = "";
+                        }
+                    break;
+                    case 'subtract':
+                        display.textContent = displayedNum + '-';
+                        operator = "-";
+                        if(num2==''){
+                            num2 = num1;
+                            num1 = "";
+                        }else{
+                            ans =  Number(num1) - Number(num2);
+                            num2 = ans;
+                            num1 = "";
+                        }
+                    break;
+                    case 'multiply':
+                        display.textContent = displayedNum + '×';
+                        operator = "*";
+                        if(num2==''){
+                            num2 = num1;
+                            num1 = "";
+                        }else{
+                            ans =  Number(num1) * Number(num2);
+                            num2 = ans;
+                            num1 = "";
+                        }
+                    break;
+                    case 'divide':
+                        display.textContent = displayedNum + '÷';
+                        operator = "/";
+                        if(num2==''){
+                            num2 = num1;
+                            num1 = "";
+                        }else{
+                            ans =  Number(num2) / Number(num1);
+                            num2 = ans;
+                            num1 = "";
+                        }
+                    break;
+                    default:
+                        // code block
+                    }
+                }else if( action === 'del' ){
+                    num1 = num1.substring(0, num1.length-1);
+                    display.textContent = display.textContent.substring(0, display.textContent.length-1);;
+                }else if( action === 'calculate'){
+                    switch(operator) {
+                    case '+':
+                            ans = Number(num1) + Number(num2);
+                    break;
+                    case '-':
+                            ans = Number(num1) - Number(num2);
+                    break;
+                    case '*':
+                            ans = Number(num1) * Number(num2);
+                    break;
+                    case '/':
+                            ans = Number(num2) / Number(num1);
+                    break;
+                    default:
+                    }
+                    if(num2 == ""){
+                        ans = Number(num1);
+                    }
+                    operator = "";
+                    display_ans.textContent = MoneyFormat(ans);
+                }else if( action === 'ac'){
+                    display.textContent = "0";
+                    display_ans.textContent = "0";
+                    ans = "";
+                    num1 = "";
+                    num2 = "";
+                    operator = "";
+                }
+              }
+            })
+
+
+            //Money Format and Decimal display(View)
+            function MoneyFormat(ValIdName) {
+                var num = Number(ValIdName);
+                var toFixednum = num.toFixed(2);
+                var returnNum = num.toLocaleString('en-US', { maximumFractionDigits: 2})
+                //var returnNum = num.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+                return returnNum;
+            }
+
+        </script>
+    
+</html>
