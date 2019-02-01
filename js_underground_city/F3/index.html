@@ -201,62 +201,64 @@
                             display.textContent = displayedNum + keyContent;
                             num1 = num1 + keyContent;
                     }
-                }else if ( (action === 'add' || action === 'subtract' || action === 'multiply' ||action === 'divide')&&
-                           (display.textContent.slice(display.textContent.length-1) == "+" || display.textContent.slice(display.textContent.length-1) == "-" || display.textContent.slice(display.textContent.length-1) == "×" || display.textContent.slice(display.textContent.length-1) == "÷")
-                          ){
-                    switch(action) {
-                    case 'add':
-                        display.textContent = displayedNum + '+';
-                        operator = "+";
-                        console.log(num1 +","+ num2)
-                        if(num2==''){
-                            num2 = num1;
-                            num1 = "";
-                        }else{
-                            ans =  Number(num1) + Number(num2);
-                            console.log(ans)
-                            num2 = ans;
-                            num1 = "";
+                }else if(action === 'add' || action === 'subtract' || action === 'multiply' ||action === 'divide'){
+                    if((display.textContent.slice(display.textContent.length-1) == "+" || display.textContent.slice(display.textContent.length-1) == "-" || display.textContent.slice(display.textContent.length-1) == "×" || display.textContent.slice(display.textContent.length-1) == "÷")){
+
+                    }else{
+                        switch(action) {
+                        case 'add':
+                            display.textContent = displayedNum + '+';
+                            operator = "+";
+                            console.log(num1 +","+ num2)
+                            if(num2==''){
+                                num2 = num1;
+                                num1 = "";
+                            }else{
+                                ans =  Number(num1) + Number(num2);
+                                console.log(ans)
+                                num2 = ans;
+                                num1 = "";
+                            }
+                        break;
+                        case 'subtract':
+                            display.textContent = displayedNum + '-';
+                            operator = "-";
+                            if(num2==''){
+                                num2 = num1;
+                                num1 = "";
+                            }else{
+                                ans =  Number(num1) - Number(num2);
+                                num2 = ans;
+                                num1 = "";
+                            }
+                        break;
+                        case 'multiply':
+                            display.textContent = displayedNum + '×';
+                            operator = "*";
+                            if(num2==''){
+                                num2 = num1;
+                                num1 = "";
+                            }else{
+                                ans =  Number(num1) * Number(num2);
+                                num2 = ans;
+                                num1 = "";
+                            }
+                        break;
+                        case 'divide':
+                            display.textContent = displayedNum + '÷';
+                            operator = "/";
+                            if(num2==''){
+                                num2 = num1;
+                                num1 = "";
+                            }else{
+                                ans =  Number(num2) / Number(num1);
+                                num2 = ans;
+                                num1 = "";
+                            }
+                        break;
+                        default:
+                            // code block
                         }
-                    break;
-                    case 'subtract':
-                        display.textContent = displayedNum + '-';
-                        operator = "-";
-                        if(num2==''){
-                            num2 = num1;
-                            num1 = "";
-                        }else{
-                            ans =  Number(num1) - Number(num2);
-                            num2 = ans;
-                            num1 = "";
-                        }
-                    break;
-                    case 'multiply':
-                        display.textContent = displayedNum + '×';
-                        operator = "*";
-                        if(num2==''){
-                            num2 = num1;
-                            num1 = "";
-                        }else{
-                            ans =  Number(num1) * Number(num2);
-                            num2 = ans;
-                            num1 = "";
-                        }
-                    break;
-                    case 'divide':
-                        display.textContent = displayedNum + '÷';
-                        operator = "/";
-                        if(num2==''){
-                            num2 = num1;
-                            num1 = "";
-                        }else{
-                            ans =  Number(num2) / Number(num1);
-                            num2 = ans;
-                            num1 = "";
-                        }
-                    break;
-                    default:
-                        // code block
                     }
                 }else if( action === 'del' ){
                     num1 = num1.substring(0, num1.length-1);
