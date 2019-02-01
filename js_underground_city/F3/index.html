@@ -201,7 +201,9 @@
                             display.textContent = displayedNum + keyContent;
                             num1 = num1 + keyContent;
                     }
-                }else if (action === 'add' || action === 'subtract' || action === 'multiply' ||action === 'divide'){
+                }else if ( (action === 'add' || action === 'subtract' || action === 'multiply' ||action === 'divide')&&
+                           (display.textContent.slice(display.textContent.length-1) == "+" || display.textContent.slice(display.textContent.length-1) == "-" || display.textContent.slice(display.textContent.length-1) == "×" || display.textContent.slice(display.textContent.length-1) == "÷")
+                          ){
                     switch(action) {
                     case 'add':
                         display.textContent = displayedNum + '+';
