@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>AR Demo</title>
+    <link rel="shortcut icon" href="#"/>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body style="margin : 0px; overflow: hidden;">
+    <!-- minimal loader shown until image descriptors are loaded -->
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+      <div class="select">
+      <label for="videoSource">Select Camera: </label><select id="videoSource"></select>
+    </div>
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-assets>
+        <video  type="video/mp4" id="vid" loop="false" src="./3d/test.mp4" webkit-playsinline >
+        </video>
+      </a-assets>
+      <a-assets>
+        <video  type="video/mp4" id="vid2" loop="false" src="./3d/sample-mp4-file.mp4" webkit-playsinline >
+        </video>
+      </a-assets>
+      <!-- 3d -->
+      <!-- we use cors proxy to avoid cross-origin problems -->
+      <!-- <a-nft
+        type="nft"
+        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <a-entity
+          gltf-model="./3d/box.glb"
+          scale="50 50 50"
+          position="150 -200 -300"
+        >
+        </a-entity>
+      </a-nft> -->
+      <!-- video -->
+      <a-nft
+        type="nft"
+        url="https://bigdipper.synology.me/ar/nft/bds"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance="0.01"
+        smoothThreshold="5"
+      >
+        <a-video vidhandler
+          src="#vid2"
+          width="400"
+          height="300"
+          scale="1 1 1"
+          position="0 0 0"
+          rotation="-90 0 0"
+        >
+        </a-video>
+      </a-nft>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+      // 3d
+      window.addEventListener('click', function ()
+        {
+          var video_1 = document.querySelector('#vid');
+          var video_2 = document.querySelector('#vid2');
+          video_1.play();
+          video_2.play();
+      });
+    </script>
+  </body>
+</html>
