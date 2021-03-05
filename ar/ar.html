@@ -2,13 +2,14 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <title>Marker Demo 0.1</title>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
-      <a-marker type='pattern' url='https://kenchan1604.github.io/ar/nft/pattern-logo.patt'>
+      <a-marker preset="hiro">
         <a-entity
-          position="-100 0 0"
+          position="0 0 0"
           scale="1 1 1"
-          gltf-model="https://kenchan1604.github.io/ar/3d/box.glb"
+          gltf-model="https://kenchan1604.github.io/ar/3d/tree.glb"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
