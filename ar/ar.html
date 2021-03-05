@@ -4,7 +4,8 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
-      <a-marker preset="hiro">
+      <a-marker type='pattern' url='./nft/pattern-logo.patt'>
+        <a-entity position='-3 2 0' text="width: 5; value:We AR.js"></a-entity>
         <a-entity
           position="0 0 0"
           scale="0.05 0.05 0.05"
