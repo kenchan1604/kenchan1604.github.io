@@ -1,0 +1,172 @@
+.videodiv{
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.videobox{
+  display: inline-block;
+}
+video{
+  display: inline-block;
+  padding: 0px 5px;
+  margin: 10px;
+  background-color: #000;
+  border-radius: 10px;
+}
+.videodiv{
+  position:relative;
+}
+canvas{
+  position: absolute;
+}
+
+.video2div{
+  display: inline-block;
+  position:relative;
+  z-index:0;
+}
+#video2_text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  margin: 0px 0px 10px 0px;
+  z-index:1;
+  color:#fff;
+}
+button{
+  margin: 20px 10px;
+}
+#about{
+  border-width:3px;
+  border-style:dashed;
+  border-color:#FFAC55;
+  padding:20px;
+  margin: 10px 20px;
+  cursor: help;
+  line-height: 30px;
+}
+
+#whatisthis,.training_box{
+  padding:20px;
+  border-style:solid;
+  margin: 10px 10px;
+  border-radius: 25px;
+}
+.training_box span{
+  font-size: 20px;
+  vertical-align: middle;
+}
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration: none;
+  text-indent: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+button:hover {
+  background: #bff8c1;
+  color: #4CAF50;
+  text-decoration: none;
+  cursor: pointer;
+}
+.clear_button{
+  background: #858585;
+}
+.clear_button:hover{
+  background: #cacaca;
+  color: #333333;
+}
+#loadJSON {
+  position: relative;
+  display: inline-block;
+  background-color: #4CAF50; /* Green */
+  border-radius: 4px;
+  padding: 10px 32px;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  text-indent: 0;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  margin: 20px 10px;
+  vertical-align: middle;
+}
+#loadJSON input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+#loadJSON:hover {
+  background: #bff8c1;
+  color: #4CAF50;
+  text-decoration: none;
+  cursor: pointer;
+}
+select{
+  height:32px;
+  line-height:20px;
+  font-size:14px;
+  margin:20px 10px;
+}
+.select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  -o-appearance:none;
+  -khtml-appearance:none;
+}
+.select::-ms-expand {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  select{
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+  }
+  #whatisthis{
+    padding:15px;
+    margin:5px 5px;
+    border-radius: 15px;
+  }
+  .training_box{
+    padding:0px;
+    margin:5px 5px;
+    border-radius: 15px;
+  }
+  button {
+    padding: 10px 32px;
+    font-size: 10px;
+    line-height: 15px;
+  }
+  #loadJSON {
+    padding: 10px 32px;
+    font-size: 10px;
+    line-height: 15px;
+  }
+  span{
+    margin: 5px 0px;
+    font-size: 10px;
+    line-height: 20px;
+    display: block;
+    text-align: center;
+  }
+}
